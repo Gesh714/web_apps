@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitalized Text</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        h1 {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 20px;
+        }
+        p {
+            margin: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            margin: 10px;
+            display: inline-block;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Capitalized Text</h1>
+    {% for line in capitalized_text.split('\n') %}
+    <p>{{ line }}</p>
+    {% endfor %}
+    <a href="/download/capitalized_text.xlsx" download>Descargar el archivo Excel</a>
+    <a href="/">Volver al inicio</a>
+</body>
+</html>
