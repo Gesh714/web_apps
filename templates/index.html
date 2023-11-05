@@ -1,13 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Capitalize Text</h1>
-    <form action="/capitalize" method="post">
-        <label for="text">Enter Text:</label>
-        <br>
-        <textarea name="text" id="text" cols="30" rows="10" placeholder="Type the text you want to capitalize..."></textarea>
-        <br>
-        <button type="submit">Capitalize</button>
-    </form>
+    <h1 id="titulo_capitaliza">Capitaliza tu texto</h1>
+    <div>
+        <div>
+            <form action="/capitalize" method="post">
+                <label for="text">Ingresa el texto:</label>
+                <br>
+                <textarea name="text" id="text" cols="30" rows="10" placeholder="Type the text you want to capitalize..."></textarea>
+                <br>
+                <button type="submit">Capitalizare</button>
+            </form>
+        </div>
+    </div>
+   
+
+    
 {% endblock %}
 <!-- Path: templates/index.html -->

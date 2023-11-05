@@ -40,4 +40,4 @@ def view_text():
     return render_template('view_text.html', text=text)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',debug=True)
+    app.run(host='0.0.0.0')
