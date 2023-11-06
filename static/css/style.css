@@ -1,27 +1,12 @@
 body {
-    background: #22c1c3;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #fdbb2d, #22c1c3);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #fdbb2d, #22c1c3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    margin: 0;
-    padding: 0;
-    display: flex;
+    background: #667db6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-family: 'Oswald', sans-serif;
 }
-/* Estilo para el contenedor principal */
-.container {
-    display: flex; /* Utiliza flexbox para crear una disposición de columnas */
-    flex-direction: row; /* Coloca los elementos en una fila */
-}
-
-/* Estilo para el menú lateral izquierdo */
-.nav flex-column {
-    width: 250px; /* Define el ancho del menú lateral */
-    background-color: #333; /* Establece un color de fondo */
-    color: #fff; /* Define el color del texto */
-    padding: 20px; /* Agrega espacio interno para el contenido */
-}
-
-/* Estilo para el contenido a la derecha */
 .content {
-    flex-grow: 1; /* Permite que el contenido a la derecha ocupe todo el espacio disponible */
-    padding: 10px; /* Agrega espacio interno para el contenido */
+    padding: 20px;
+}
+.navbar-sidebar {
+    height: 100vh;
 }
