@@ -38,16 +38,11 @@ def capitalize():
     wb.save(excel_file)
 
     # Devolver un enlace para descargar el archivo Excel
-    return render_template('capitalized_text.html', capitalized_text=capitalize_text, excel_file=excel_file)
+    return render_template('capitalized_text.html', capitalize_text=capitalize_text, excel_file=excel_file)
 
 @app.route('/download/<filename>')
 def download(filename):
     return send_file(filename, as_attachment=True)
-
-@app.route('/view-text', methods=['POST'])
-def view_text():
-    text = request.form['text']
-    return render_template('view_text.html', text=text)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

@@ -1,28 +1,61 @@
-* {
-    font-family: 'Arial', sans-serif;
-}
-body {
-    background: #667db6;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-.navbar-sidebar {
+.container-fluid {
+    display: flex;
     height: 100vh;
 }
+
+.navbar-sidebar {
+    width: 25%;
+    float: left;
+    height: 100%;
+    background-color: #0082c8;
+    /* Agrega un ancho mínimo al sidebar para evitar que se coloque en la parte superior en pantallas pequeñas */
+    border-right: 5px solid #dee2e6;
+    padding:20px;
+    padding-top:20px;
+    padding-bottom: 80px; 
+}
+
 .nav-link {
-    margin-top: 5px;
+    /* Establece la altura máxima para que los enlaces no se desborden en el sidebar */
+    height: .15px
+    max-height: 50px;
     color: #fff;
-    font-size: 20px;
-    font-weight: 750;
-    padding: .5rem 1rem;
-    transition: all .3s ease;
-    border-radius: .25rem;
-    letter-spacing: .15px;
-    position: relative;
-    z-index: 1;
+    background: #667db6;
+    font-size: 16px;
+    font-weight: 400;
+    padding: .7rem 1rem;
+    border-radius: .15rem;
+    letter-spacing: .30px;
+    position: relative ;
+    z-index: 2;
     text-decoration: none;
-    background: #667db6;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
+    text-align: left;
+}
+.content-container {
+    width: 75%;
+    float: right;
+    height: 100%;
+    background: #fff;
+    color: #333;
+}
+.container {
+    width: 40%;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    background: #fff;
+    color: #333;
+}
+.container-form {
+    position: right;
+    width: 60%;
+    height: 100%;
+    padding: 10px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    webkit-align-content: center;
+    background: #fff;
+    color: #333;
 }

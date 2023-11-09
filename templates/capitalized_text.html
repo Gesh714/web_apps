@@ -2,9 +2,9 @@
 
 {% block content %}
     <h1>Texto Capitalizado</h1>
-    {% for line in capitalized_text.split('\n') %}
-    <p>{{ line }}</p>
+    {% for line in capitalize_text.split('\n') %}
+    <p>{{ line }}</p><br>
     {% endfor %}
     <a href="/download/{{ excel_file }}" download>Descargar el archivo Excel</a>
-    <a href="/">Volver al inicio</a>
+    <a href="/capitalizar_texto">Volver al inicio</a>
 {% endblock %}

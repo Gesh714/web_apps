@@ -8,34 +8,35 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar navbar-sidebar">
+            <nav class="col-md-3 col-lg-2 d-md-block  sidebar navbar-sidebar">
                 <div class="position-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/" style="color: white;">Home</a>
+                            <a class="nav-link active" aria-current="page" href="/"">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"style="color: white;" >Tienda</a>
+                            <a class="nav-link" href="#">Tienda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: white;">Diseña tu polera</a>
+                            <a class="nav-link" href="#">Diseña tu polera</a>
                         </li>  
                         <li class="nav-item">
-                            <a class="nav-link" href="/capitalizar_texto" style="color: white;">Capitalizar texto</a>
+                            <a class="nav-link" href="/capitalizar_texto">Capitalizar texto</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: white;">Contacto</a>
+                            <a class="nav-link" href="#">Contacto</a>
                         </li>
                     </ul>
                 </div>
             </nav>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 content-container">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                {% block content %}{% endblock %}
+                    {% block content %}{% endblock %}
                 </div>
             </main>
         </div>
     </div>
 </body>
 </html>
+

@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1 id="titulo_capitaliza">Capitaliza tu texto</h1>
-    <div>
+    <div class="container">
+        <h1 id="titulo_capitaliza">Capitaliza tu texto</h1>
+        <h4 id="descripcion">
+            Escribe lo que quieras y lo capitalizaré
+        </h4>
+    </div>    
+    <div class="container-form">
         <form action="/capitalize" method="post">
             <label for="text">Ingresa el texto:</label>
             <br>
