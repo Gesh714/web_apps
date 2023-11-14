@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <div class='container-contador'>
+        <h1>Contador de declaraciones de salud</h1>
+        <br>
+        <h2>Declaraciones de salud</h2>
+        <p>Llevas {{conteo_ds}} declaraciones de salud</p>
+        <br>
+        <form>
+            <input type="submit" value="Agregar declaración de salud">
+        </form>
+        </div>
+        <div class='container-calculadoraimc'>
+            <h2>Calculadora de IMC</h2>
+            <form method="post" action="{{ url_for('calcular_imc') }}">
+                <label for="peso">Peso (kg):</label>
+                <input type="text" name="peso" required>
+                <br>
+                <label for="altura">Altura (m):</label>
+                <input type="text" name="altura" required>
+                <br>
+                <input type="submit" value="Calcular IMC">
+            </form>
+
+            {% if resultado_imc %}
+                <p>Tu IMC es: {{ resultado_imc }}</p>
+            {% endif %}
+        </div>
+{% endblock %}
