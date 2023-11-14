@@ -3,11 +3,13 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 import openpyxl
 from openpyxl import Workbook
-from modules import db
+from modules.db import Database
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'MiaLaPesadita'  # Asegúrate de cambiar esto a una clave segura en un entorno de producción
+db = Database()
+
 
 class LoginForm(FlaskForm):
     username = StringField('Usuario')
@@ -78,8 +80,8 @@ def login():
     return render_template('login.html', form=form)
 
 @app.route('/camila')
-def camila(): 
-    conteo_ds = 0
+def camila():
+    conteo_ds = db.conteo_diario()
     return render_template('camila.html', conteo_ds=conteo_ds)
 
 @app.route('/calcular_imc', methods=['POST'])
@@ -88,12 +90,26 @@ def calcular_imc():
         peso = float(request.form['peso'])
         altura = float(request.form['altura'])
         imc = calcular_imc_real(peso, altura)
-        return render_template('camila.html', resultado_imc=imc)
+        return jsonify({'imc': imc})
 
 def calcular_imc_real(peso, altura):
     # Fórmula del IMC: IMC = peso / (altura * altura)
     imc = peso / (altura ** 2)
     return round(imc, 2)
+
+@app.route('/agregar_ds', methods=["POST"])
+def agregar_ds():
+    if request.method == 'POST':
+        db.agregarDs()
+        conteo_ds = db.conteo_diario()
+        return jsonify({'conteo_ds': conteo_ds})
+
+@app.route('/borrar_registro_diario', methods=["POST"])
+def borrar_registro_diario():
+    if request.method == 'POST':
+        db.Eliminar_registro_diario()
+        conteo_ds = db.conteo_diario()
+        return jsonify({'conteo_ds': conteo_ds})
     
 if __name__ == '__main__':
     app.run(host='0.0.0.0',debug=True)

@@ -6,6 +6,7 @@ from datetime import datetime
 class Database:
     def __init__(self):
         self.db_name = 'database.db'
+        self.crear_tabla_contador('Contador')
 
     def run_query(self, query, parameters=()):
         with sqlite3.connect(self.db_name) as conn:
@@ -45,12 +46,12 @@ class Database:
         output_file = os.path.join(download_path, 'registro_ds.xlsx')
         df.to_excel(output_file,index=False, engine='openpyxl', if_exists='replace')
 
-    def Eliminar_registro(self,fecha,hora):
-        query = 'DELETE FROM Contador WHERE fecha = ? AND hora = ?'
-        db_connection = sqlite3.connect(self.db_name) 
-        cursor = db_connection.cursor()
-        cursor.execute(query,(fecha,hora))
-        db_connection.commit()
+    def Eliminar_registro_diario(self):
+        fecha_actual = datetime.now()
+        fecha = fecha_actual.strftime('%d-%m-%Y')
+        query = 'DELETE FROM Contador WHERE fecha = ?'
+        parametros = (fecha,)
+        self.run_query(query, parametros)
 
     def crear_tabla_contador(self, tabla):
         query = """CREATE TABLE IF NOT EXISTS {} (

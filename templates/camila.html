@@ -1,30 +1,83 @@
 {% extends "base.html" %}
 
 {% block content %}
-        <div class='container-contador'>
+    <div class='container-contador'>
         <h1>Contador de declaraciones de salud</h1>
         <br>
-        <h2>Declaraciones de salud</h2>
-        <p>Llevas {{conteo_ds}} declaraciones de salud</p>
-        <br>
-        <form>
-            <input type="submit" value="Agregar declaración de salud">
-        </form>
+        <div id="contador-ds">
+            <p>Llevas {{conteo_ds}} declaraciones de salud</p>
         </div>
+        <form id="agregar-ds-form">
+            <input type="button" value="Agregar declaración de salud" onclick="agregarDeclaracionSalud()">
+            <input type="button" value="Borrar registro diario" onclick="borrarRegistroDiario()">
+        </form>
+        <br>
         <div class='container-calculadoraimc'>
             <h2>Calculadora de IMC</h2>
-            <form method="post" action="{{ url_for('calcular_imc') }}">
+            <form id="calcular-imc-form">
                 <label for="peso">Peso (kg):</label>
-                <input type="text" name="peso" required>
+                <input type="text" id="peso" name="peso" required>
                 <br>
                 <label for="altura">Altura (m):</label>
-                <input type="text" name="altura" required>
+                <input type="text" id="altura" name="altura" required>
                 <br>
-                <input type="submit" value="Calcular IMC">
+                <input type="button" value="Calcular IMC" onclick="calcularIMC()">
             </form>
-
-            {% if resultado_imc %}
-                <p>Tu IMC es: {{ resultado_imc }}</p>
-            {% endif %}
+            <div id="resultado-imc"></div>
         </div>
+
+        <script>
+            function calcularIMC() {
+                var peso = document.getElementById('peso').value;
+                var altura = document.getElementById('altura').value;
+
+                // Realiza una solicitud AJAX al servidor
+                fetch('/calcular_imc', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: 'peso=' + peso + '&altura=' + altura,
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Muestra el resultado en el div de resultado-imc
+                    document.getElementById('resultado-imc').innerHTML = 'Tu IMC es: ' + data.imc;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+
+            function agregarDeclaracionSalud() {
+                // Realiza una solicitud AJAX para agregar una declaración de salud
+                fetch('/agregar_ds', {
+                    method: 'POST',
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Actualiza el contador diario sin recargar la página
+                    document.getElementById('contador-ds').innerHTML = '<p>Llevas ' + data.conteo_ds + ' declaraciones de salud</p>';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+
+            function borrarRegistroDiario() {
+                // Realiza una solicitud AJAX para borrar el registro diario
+                fetch('/borrar_registro_diario', {
+                    method: 'POST',
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Actualiza el contador diario sin recargar la página
+                    document.getElementById('contador-ds').innerHTML = '<p>Llevas ' + data.conteo_ds + ' declaraciones de salud</p>';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+        </script>
+    </div>
 {% endblock %}
